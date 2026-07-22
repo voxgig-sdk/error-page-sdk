@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://51-68-119-197.sslip.io/openapi/techstack"
+      }
+      description: "This API provides information about network errors, including detailed messages and suggestions for resolution. It can be used to display error pages when the network is unreachable or when a certain webpage cannot be accessed."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://51-68-119-197.sslip.io"
+        }
+      ]
+      summary: "This API provides information about network errors, including detailed messages and suggestions for resolution."
+      title: "Error Page API"
+      version: "1.0.0"
+      website: "https://51-68-119-197.sslip.io/openapi/techstack"
+    }
+  }
+}
+

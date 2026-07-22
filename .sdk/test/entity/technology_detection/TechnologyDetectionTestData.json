@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "technology_detection": {
+      "TECHNOLOGY_DETECTION00": {
+        "category": "s28",
+        "confidence": 41,
+        "name": "s2a",
+        "version": "s2b"
+      },
+      "TECHNOLOGY_DETECTION01": {
+        "category": "s50",
+        "confidence": 81,
+        "name": "s52",
+        "version": "s53"
+      },
+      "TECHNOLOGY_DETECTION02": {
+        "category": "s78",
+        "confidence": 121,
+        "name": "s7a",
+        "version": "s7b"
+      }
+    }
+  },
+  "new": {
+    "technology_detection": {
+      "technology_detection_ref01": {
+        "category": "sa0",
+        "confidence": 161,
+        "name": "sa2",
+        "version": "sa3"
+      }
+    }
+  }
+}

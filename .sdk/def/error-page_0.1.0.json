@@ -1,0 +1,239 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Error Page API",
+    "description": "This API provides information about network errors, including detailed messages and suggestions for resolution. It can be used to display error pages when the network is unreachable or when a certain webpage cannot be accessed.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://51-68-119-197.sslip.io/openapi/techstack"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://51-68-119-197.sslip.io",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/techstack": {
+      "get": {
+        "summary": "Detect frameworks, CMS, CDN, analytics on any website",
+        "description": "Analyzes a given URL to detect the technology stack including frameworks, content management systems, CDN providers, and analytics tools used on the website.",
+        "operationId": "detectTechStack",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to analyze for technology stack detection",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with detected technology stack information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The analyzed URL"
+                    },
+                    "technologies": {
+                      "type": "array",
+                      "description": "List of detected technologies",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the detected technology"
+                          },
+                          "category": {
+                            "type": "string",
+                            "description": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)"
+                          },
+                          "version": {
+                            "type": "string",
+                            "description": "Version of the technology if detected"
+                          },
+                          "confidence": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "Confidence level of the detection (0-100)"
+                          }
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the analysis"
+                    }
+                  }
+                },
+                "example": {
+                  "url": "https://example.com",
+                  "technologies": [
+                    {
+                      "name": "Nginx",
+                      "category": "Web Server",
+                      "version": "1.18.0",
+                      "confidence": 95.5
+                    },
+                    {
+                      "name": "Google Analytics",
+                      "category": "Analytics",
+                      "confidence": 100
+                    }
+                  ],
+                  "timestamp": "2024-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed error description"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid URL",
+                  "message": "The provided URL parameter is not valid or is missing"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Website not found or unreachable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed error description"
+                    },
+                    "suggestions": {
+                      "type": "array",
+                      "description": "Suggestions for resolution",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Website unreachable",
+                  "message": "The specified website cannot be accessed",
+                  "suggestions": [
+                    "Check if the URL is correct",
+                    "Verify your network connection",
+                    "The website may be temporarily down"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed error description"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing your request"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable - Network error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed error description"
+                    },
+                    "suggestions": {
+                      "type": "array",
+                      "description": "Suggestions for resolution",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Network unreachable",
+                  "message": "The network is currently unreachable",
+                  "suggestions": [
+                    "Check your internet connection",
+                    "Try again later",
+                    "Contact your network administrator"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Technology Detection"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Technology Detection",
+      "description": "Endpoints for detecting website technology stacks"
+    }
+  ],
+  "externalDocs": {
+    "description": "API Documentation",
+    "url": "https://51-68-119-197.sslip.io/openapi/techstack"
+  }
+}

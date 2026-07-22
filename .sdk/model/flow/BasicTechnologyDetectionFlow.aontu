@@ -1,0 +1,22 @@
+# BasicTechnologyDetectionFlow
+
+main: kit: flow: BasicTechnologyDetectionFlow:
+{
+  entity: "technology_detection",
+  kind: "basic",
+  name: "BasicTechnologyDetectionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "technology_detection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTechnologyDetectionFlow"
+}
