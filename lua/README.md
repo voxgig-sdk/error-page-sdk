@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local technology_detection, err = client:TechnologyDetection():load()
+    local technology_detection, err = client:TechnologyDetection():list()
     if err then error(err) end
-    -- technology_detection is the loaded record
+    -- technology_detection is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

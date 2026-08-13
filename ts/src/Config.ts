@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'ErrorPage',
   }
 
 
@@ -104,6 +104,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/techstack",
               "parts": [
@@ -117,7 +118,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.technologies`"
               },
               "index$": 0
             }

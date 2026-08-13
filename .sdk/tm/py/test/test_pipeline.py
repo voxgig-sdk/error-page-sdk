@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ErrorPageSDK
-from core.error import ErrorPageError
-from core.result import ErrorPageResult
-from core.response import ErrorPageResponse
-from core.spec import ErrorPageSpec
-from feature.base_feature import ErrorPageBaseFeature
+from projectname_sdk.core.error import ErrorPageError
+from projectname_sdk.core.result import ErrorPageResult
+from projectname_sdk.core.response import ErrorPageResponse
+from projectname_sdk.core.spec import ErrorPageSpec
+from projectname_sdk.feature.base_feature import ErrorPageBaseFeature
 
 
 def _client():

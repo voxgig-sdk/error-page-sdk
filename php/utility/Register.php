@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ErrorPageUtility::setRegistrar(function (ErrorPageUtility $u): void {
     $u->prepare_params = [ErrorPagePrepareParams::class, 'call'];
     $u->prepare_path = [ErrorPagePreparePath::class, 'call'];
     $u->prepare_query = [ErrorPagePrepareQuery::class, 'call'];
+    $u->graphql_body = [ErrorPageGraphql::class, 'body'];
+    $u->graphql_errors = [ErrorPageGraphql::class, 'errors'];
     $u->result_basic = [ErrorPageResultBasic::class, 'call'];
     $u->result_body = [ErrorPageResultBody::class, 'call'];
     $u->result_headers = [ErrorPageResultHeaders::class, 'call'];

@@ -37,7 +37,7 @@ class TechnologyDetectionEntity extends ErrorPageEntityBase<TechnologyDetection>
 
 
 
-  async list(this: any, reqmatch?: TechnologyDetectionListMatch, ctrl?: Control): Promise<TechnologyDetection[]> {
+  async list(this: any, reqmatch?: TechnologyDetectionListMatch, ctrl?: Control): Promise<TechnologyDetectionEntity[]> {
 
     const utility = this._utility
 

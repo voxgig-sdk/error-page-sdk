@@ -80,6 +80,7 @@ class ErrorPageConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/techstack',
                   'parts' => [
@@ -93,7 +94,7 @@ class ErrorPageConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.technologies`',
                   ],
                   'index$' => 0,
                 ],

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from errorpage_sdk.utility.voxgig_struct import voxgig_struct as vs
 from errorpage_sdk import ErrorPageSDK
-from core import helpers
+from errorpage_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _technology_detection_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID": {},
-        "ERRORPAGE_TEST_LIVE": "FALSE",
+        "ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID": {},
+        "ERROR_PAGE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ERRORPAGE_TEST_LIVE") == "TRUE"
+    live = env.get("ERROR_PAGE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

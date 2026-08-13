@@ -23,8 +23,8 @@ module ErrorPageTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ERRORPAGE_TEST_LIVE")
-    override = getenv("ERRORPAGE_TEST_OVERRIDE")
+    live = getenv("ERROR_PAGE_TEST_LIVE")
+    override = getenv("ERROR_PAGE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ErrorPageTestRunner
       end
     end
 
-    explain = getenv("ERRORPAGE_TEST_EXPLAIN")
-    m["ERRORPAGE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ERROR_PAGE_TEST_EXPLAIN")
+    m["ERROR_PAGE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

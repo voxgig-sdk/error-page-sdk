@@ -26,8 +26,8 @@ import {
 describe('TechnologyDetectionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ERRORPAGE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ERRORPAGE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ERROR_PAGE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ERROR_PAGE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ErrorPageSDK.test()
@@ -63,7 +63,7 @@ describe('TechnologyDetectionEntity', async () => {
     const technology_detection_ref01_ent = client.TechnologyDetection()
     const technology_detection_ref01_match: any = {}
 
-    const technology_detection_ref01_list = await technology_detection_ref01_ent.list(technology_detection_ref01_match)
+    const technology_detection_ref01_list = (await technology_detection_ref01_ent.list(technology_detection_ref01_match)).map((e: any) => e.data())
 
 
   })

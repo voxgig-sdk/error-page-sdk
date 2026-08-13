@@ -75,6 +75,7 @@ module ErrorPageConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/techstack",
                   "parts" => [
@@ -88,7 +89,7 @@ module ErrorPageConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.technologies`",
                   },
                   "index$" => 0,
                 },

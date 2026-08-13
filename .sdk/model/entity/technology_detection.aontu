@@ -58,7 +58,7 @@ main: kit: entity: technology_detection: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.technologies`"
           }
         }
       ]

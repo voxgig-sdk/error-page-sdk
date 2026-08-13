@@ -74,6 +74,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/techstack",
                 ["parts"] = {
@@ -87,7 +88,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.technologies`",
                 },
                 ["index$"] = 0,
               },

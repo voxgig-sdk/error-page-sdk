@@ -61,11 +61,11 @@ function technology_detection_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID"] = {},
-    ["ERRORPAGE_TEST_LIVE"] = "FALSE",
+    ["ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID"] = {},
+    ["ERROR_PAGE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ERRORPAGE_TEST_LIVE"] == "TRUE"
+  local live = env["ERROR_PAGE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

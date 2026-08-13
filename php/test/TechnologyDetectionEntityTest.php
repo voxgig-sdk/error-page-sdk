@@ -72,7 +72,7 @@ class TechnologyDetectionEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -117,22 +117,22 @@ function technology_detection_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID");
+    $entid_env_raw = getenv("ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID" => $idmap,
-        "ERRORPAGE_TEST_LIVE" => "FALSE",
-        "ERRORPAGE_TEST_EXPLAIN" => "FALSE",
+        "ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID" => $idmap,
+        "ERROR_PAGE_TEST_LIVE" => "FALSE",
+        "ERROR_PAGE_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID"]);
+        $env["ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["ERRORPAGE_TEST_LIVE"] === "TRUE") {
+    if ($env["ERROR_PAGE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -141,13 +141,13 @@ function technology_detection_basic_setup($extra)
         $client = new ErrorPageSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["ERRORPAGE_TEST_LIVE"] === "TRUE";
+    $live = $env["ERROR_PAGE_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["ERRORPAGE_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["ERROR_PAGE_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

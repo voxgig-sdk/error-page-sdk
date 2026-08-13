@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ErrorPage SDK exists test
 
 import pytest
 from errorpage_sdk import ErrorPageSDK

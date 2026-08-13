@@ -66,11 +66,11 @@ function technology_detection_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "ERRORPAGE_TEST_TECHNOLOGY_DETECTION_ENTID" => [],
-        "ERRORPAGE_TEST_LIVE" => "FALSE",
+        "ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID" => [],
+        "ERROR_PAGE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["ERRORPAGE_TEST_LIVE"] === "TRUE";
+    $live = $env["ERROR_PAGE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

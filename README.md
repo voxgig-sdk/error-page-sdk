@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ErrorPageSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ErrorPageSDK.test({
+  entity: {
+    technology_detection: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const technologydetections = await client.TechnologyDetection().list()
-// technologydetections is an array of bare TechnologyDetection records populated with mock data
+// technologydetections is an array of TechnologyDetection entities, populated with mock data
+// — call technologydetections[0].data() for the record itself
 console.log(technologydetections)
 ```
 
@@ -110,7 +119,7 @@ import { ErrorPageSDK } from '@voxgig-sdk/error-page'
 
 const client = new ErrorPageSDK()
 
-// List all technologydetections (returns TechnologyDetection[])
+// List all technologydetections (returns TechnologyDetectionEntity[] — .data() for the record)
 const technologydetections = await client.TechnologyDetection().list()
 for (const technologydetection of technologydetections) {
   console.log(technologydetection)
@@ -343,6 +352,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://51-68-119-197.sslip.io/openapi/techstack](https://51-68-119-197.sslip.io/openapi/techstack)
 

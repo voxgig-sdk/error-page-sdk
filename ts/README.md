@@ -35,7 +35,9 @@ const client = new ErrorPageSDK()
 
 ### 2. List technologydetection records
 
-`list()` resolves to an array of TechnologyDetection objects — iterate it directly:
+`list()` resolves to an array of TechnologyDetection ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const technologydetections = await client.TechnologyDetection().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = ErrorPageSDK.test()
 
 const technologydetection = await client.TechnologyDetection().list()
-// technologydetection is a bare entity populated with mock response data
+// technologydetection is the entity, populated with mock response data
+// — call technologydetection.data() for the record itself
 console.log(technologydetection)
 ```
 
