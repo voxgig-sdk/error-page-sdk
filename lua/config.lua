@@ -1,5 +1,8 @@
 -- ErrorPage SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -25,32 +28,20 @@ local function make_config()
       ["technology_detection"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "category",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "confidence",
-            ["req"] = false,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "version",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
         },
         ["name"] = "technology_detection",
@@ -60,11 +51,9 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "https://example.com",
                       ["kind"] = "query",
                       ["name"] = "url",
@@ -90,10 +79,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.technologies`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {

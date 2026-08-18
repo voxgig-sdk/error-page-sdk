@@ -40,7 +40,7 @@ class ErrorPageSDK
         $utility = new ErrorPageUtility();
         $this->_utility = $utility;
 
-        $config = ErrorPageConfig::make_config();
+        $config = ErrorPageConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

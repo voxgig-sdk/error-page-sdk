@@ -28,7 +28,7 @@ class ErrorPageSDK
     utility = ErrorPageUtility.new
     @_utility = utility
 
-    config = ErrorPageConfig.make_config
+    config = ErrorPageConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

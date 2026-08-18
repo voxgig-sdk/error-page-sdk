@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://51-68-119-197.sslip.io',
+    base: "https://51-68-119-197.sslip.io",
 
     headers: {
       "content-type": "application/json"
@@ -55,32 +55,20 @@ class Config {
     "technology_detection": {
       "fields": [
         {
-          "active": true,
           "name": "category",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "confidence",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "version",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "technology_detection",
@@ -90,11 +78,9 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "https://example.com",
                     "kind": "query",
                     "name": "url",
@@ -119,11 +105,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.technologies`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
