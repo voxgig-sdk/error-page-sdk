@@ -36,24 +36,28 @@
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "confidence",
               "req": false,
+              "short": "Confidence level of the detection (0-100)",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the detected technology",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "Version of the technology if detected",
               "type": "`$STRING`"
             }
           ],

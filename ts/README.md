@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,10 +287,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `confidence` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | Confidence level of the detection (0-100) |
+| `name` | Name of the detected technology |
+| `version` | Version of the technology if detected |
 
 Operations: list.
 
@@ -315,10 +315,10 @@ Create an instance: `const technology_detection = client.TechnologyDetection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `confidence` | `number` |  |
-| `name` | `string` |  |
-| `version` | `string` |  |
+| `category` | `string` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `number` | Confidence level of the detection (0-100) |
+| `name` | `string` | Name of the detected technology |
+| `version` | `string` | Version of the technology if detected |
 
 #### Example: List
 

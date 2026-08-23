@@ -247,10 +247,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `confidence` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | Confidence level of the detection (0-100) |
+| `name` | Name of the detected technology |
+| `version` | Version of the technology if detected |
 
 Operations: List.
 
@@ -275,10 +275,10 @@ Create an instance: `$technology_detection = $client->TechnologyDetection();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `confidence` | `float` |  |
-| `name` | `string` |  |
-| `version` | `string` |  |
+| `category` | `string` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `float` | Confidence level of the detection (0-100) |
+| `name` | `string` | Name of the detected technology |
+| `version` | `string` | Version of the technology if detected |
 
 #### Example: List
 

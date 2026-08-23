@@ -231,10 +231,10 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `confidence` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | Confidence level of the detection (0-100) |
+| `name` | Name of the detected technology |
+| `version` | Version of the technology if detected |
 
 Operations: List.
 
@@ -259,10 +259,10 @@ Create an instance: `local technology_detection = client:TechnologyDetection(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `confidence` | `number` |  |
-| `name` | `string` |  |
-| `version` | `string` |  |
+| `category` | `string` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `number` | Confidence level of the detection (0-100) |
+| `name` | `string` | Name of the detected technology |
+| `version` | `string` | Version of the technology if detected |
 
 #### Example: List
 

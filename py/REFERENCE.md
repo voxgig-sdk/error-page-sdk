@@ -87,10 +87,10 @@ technology_detection = client.TechnologyDetection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `str` | No |  |
-| `confidence` | `float` | No |  |
-| `name` | `str` | No |  |
-| `version` | `str` | No |  |
+| `category` | `str` | No | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `float` | No | Confidence level of the detection (0-100) |
+| `name` | `str` | No | Name of the detected technology |
+| `version` | `str` | No | Version of the technology if detected |
 
 ### Operations
 

@@ -243,10 +243,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `confidence` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | Confidence level of the detection (0-100) |
+| `name` | Name of the detected technology |
+| `version` | Version of the technology if detected |
 
 Operations: List.
 
@@ -271,10 +271,10 @@ Create an instance: `technology_detection = client.TechnologyDetection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `str` |  |
-| `confidence` | `float` |  |
-| `name` | `str` |  |
-| `version` | `str` |  |
+| `category` | `str` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `float` | Confidence level of the detection (0-100) |
+| `name` | `str` | Name of the detected technology |
+| `version` | `str` | Version of the technology if detected |
 
 #### Example: List
 

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ErrorPage',
+        slug: "error-page",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,18 +67,22 @@ class Config {
       "fields": [
         {
           "name": "category",
+          "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
           "type": "`$STRING`"
         },
         {
           "name": "confidence",
+          "short": "Confidence level of the detection (0-100)",
           "type": "`$NUMBER`"
         },
         {
           "name": "name",
+          "short": "Name of the detected technology",
           "type": "`$STRING`"
         },
         {
           "name": "version",
+          "short": "Version of the technology if detected",
           "type": "`$STRING`"
         }
       ],

@@ -98,10 +98,10 @@ fmt.Println(technologyDetection.GetName()) // "technology_detection"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `confidence` | `float64` | No |  |
-| `name` | `string` | No |  |
-| `version` | `string` | No |  |
+| `category` | `string` | No | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `float64` | No | Confidence level of the detection (0-100) |
+| `name` | `string` | No | Name of the detected technology |
+| `version` | `string` | No | Version of the technology if detected |
 
 ### Operations
 

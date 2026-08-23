@@ -237,10 +237,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `confidence` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | Confidence level of the detection (0-100) |
+| `name` | Name of the detected technology |
+| `version` | Version of the technology if detected |
 
 Operations: List.
 
@@ -265,10 +265,10 @@ Create an instance: `technology_detection = client.TechnologyDetection`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `String` |  |
-| `confidence` | `Float` |  |
-| `name` | `String` |  |
-| `version` | `String` |  |
+| `category` | `String` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `Float` | Confidence level of the detection (0-100) |
+| `name` | `String` | Name of the detected technology |
+| `version` | `String` | Version of the technology if detected |
 
 #### Example: List
 

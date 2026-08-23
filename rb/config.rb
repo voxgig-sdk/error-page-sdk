@@ -19,6 +19,9 @@ module ErrorPageConfig
     {
       "main" => {
         "name" => "ErrorPage",
+        "slug" => "error-page",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,18 +44,22 @@ module ErrorPageConfig
           "fields" => [
             {
               "name" => "category",
+              "short" => "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
               "type" => "`$STRING`",
             },
             {
               "name" => "confidence",
+              "short" => "Confidence level of the detection (0-100)",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the detected technology",
               "type" => "`$STRING`",
             },
             {
               "name" => "version",
+              "short" => "Version of the technology if detected",
               "type" => "`$STRING`",
             },
           ],

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "ErrorPage",
+			"slug": "error-page",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,18 +36,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "category",
+						"short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "confidence",
+						"short": "Confidence level of the detection (0-100)",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the detected technology",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "Version of the technology if detected",
 						"type": "`$STRING`",
 					},
 				},

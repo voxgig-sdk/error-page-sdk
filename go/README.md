@@ -6,7 +6,7 @@ The Golang SDK for the ErrorPage API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.TechnologyDetection(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,10 +260,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"category"` |  |
-| `"confidence"` |  |
-| `"name"` |  |
-| `"version"` |  |
+| `"category"` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `"confidence"` | Confidence level of the detection (0-100) |
+| `"name"` | Name of the detected technology |
+| `"version"` | Version of the technology if detected |
 
 Operations: List.
 
@@ -288,10 +288,10 @@ Create an instance: `technologyDetection := client.TechnologyDetection(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `confidence` | `float64` |  |
-| `name` | `string` |  |
-| `version` | `string` |  |
+| `category` | `string` | Category of the technology (e.g., Framework, CMS, CDN, Analytics) |
+| `confidence` | `float64` | Confidence level of the detection (0-100) |
+| `name` | `string` | Name of the detected technology |
+| `version` | `string` | Version of the technology if detected |
 
 #### Example: List
 
