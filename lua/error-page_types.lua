@@ -13,10 +13,7 @@
 ---@field version? string
 
 ---@class TechnologyDetectionListMatch
----@field category? string
----@field confidence? number
----@field name? string
----@field version? string
+---@field url string
 
 local M = {}
 

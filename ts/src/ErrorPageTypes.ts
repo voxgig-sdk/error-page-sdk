@@ -13,9 +13,6 @@ export interface TechnologyDetection {
 }
 
 export interface TechnologyDetectionListMatch {
-  category?: string
-  confidence?: number
-  name?: string
-  version?: string
+  url: string
 }
 

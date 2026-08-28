@@ -24,9 +24,6 @@ class TechnologyDetection
 /** Request payload for TechnologyDetection#list. */
 class TechnologyDetectionListMatch
 {
-    public ?string $category = null;
-    public ?float $confidence = null;
-    public ?string $name = null;
-    public ?string $version = null;
+    public string $url;
 }
 

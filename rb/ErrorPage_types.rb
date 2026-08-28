@@ -31,22 +31,10 @@ TechnologyDetection = Struct.new(
 
 # Request payload for TechnologyDetection#list.
 #
-# @!attribute [rw] category
-#   @return [String, nil]
-#
-# @!attribute [rw] confidence
-#   @return [Float, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] version
-#   @return [String, nil]
+# @!attribute [rw] url
+#   @return [String]
 TechnologyDetectionListMatch = Struct.new(
-  :category,
-  :confidence,
-  :name,
-  :version,
+  :url,
   keyword_init: true
 )
 

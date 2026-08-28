@@ -23,8 +23,5 @@ class TechnologyDetection(TypedDict, total=False):
     version: str
 
 
-class TechnologyDetectionListMatch(TypedDict, total=False):
-    category: str
-    confidence: float
-    name: str
-    version: str
+class TechnologyDetectionListMatch(TypedDict):
+    url: str

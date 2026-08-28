@@ -22,10 +22,7 @@ type TechnologyDetection struct {
 
 // TechnologyDetectionListMatch is the typed request payload for TechnologyDetection.ListTyped.
 type TechnologyDetectionListMatch struct {
-	Category *string `json:"category,omitempty"`
-	Confidence *float64 `json:"confidence,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Url string `json:"url"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
