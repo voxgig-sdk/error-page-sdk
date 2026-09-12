@@ -12,6 +12,7 @@ main: kit: entity: technology_detection: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "confidence"
       req: false
       short: "Confidence level of the detection (0-100)"
@@ -51,9 +52,13 @@ main: kit: entity: technology_detection: {
           }
           method: "GET"
           orig: "/api/techstack"
-          parts: [
-            "api"
-            "techstack"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "techstack"
+            }
           ]
           select: {
             exist: [

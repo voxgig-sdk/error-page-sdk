@@ -49,6 +49,7 @@ module ErrorPageConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "confidence",
               "short" => "Confidence level of the detection (0-100)",
               "type" => "`$NUMBER`",
@@ -86,9 +87,13 @@ module ErrorPageConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/techstack",
-                  "parts" => [
-                    "api",
-                    "techstack",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "techstack",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -99,6 +104,10 @@ module ErrorPageConfig
                     "req" => "`reqdata`",
                     "res" => "`body.technologies`",
                   },
+                  "parts" => [
+                    "api",
+                    "techstack",
+                  ],
                 },
               ],
             },

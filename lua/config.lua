@@ -37,6 +37,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "confidence",
             ["short"] = "Confidence level of the detection (0-100)",
             ["type"] = "`$NUMBER`",
@@ -74,9 +75,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/techstack",
-                ["parts"] = {
-                  "api",
-                  "techstack",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "techstack",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -86,6 +91,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.technologies`",
+                },
+                ["parts"] = {
+                  "api",
+                  "techstack",
                 },
               },
             },

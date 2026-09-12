@@ -63,6 +63,7 @@ class ErrorPageConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'confidence',
               'short' => 'Confidence level of the detection (0-100)',
               'type' => '`$NUMBER`',
@@ -100,9 +101,13 @@ class ErrorPageConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/techstack',
-                  'parts' => [
-                    'api',
-                    'techstack',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'techstack',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -112,6 +117,10 @@ class ErrorPageConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.technologies`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'techstack',
                   ],
                 ],
               ],
