@@ -105,7 +105,7 @@ local results, err = client:TechnologyDetection():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
+| TypeScript | `@voxgig-sdk/error-page-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
 | Python | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
 | PHP | `voxgig-sdk/error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/error-page-sdk/go` | `go get github.com/voxgig-sdk/error-page-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:TechnologyDetection():list()
 ### TypeScript
 
 ```ts
-import { ErrorPageSDK } from '@voxgig-sdk/error-page'
+import { ErrorPageSDK } from '@voxgig-sdk/error-page-sdk'
 
 const client = new ErrorPageSDK()
 

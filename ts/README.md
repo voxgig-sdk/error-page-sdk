@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ErrorPageSDK } from '@voxgig-sdk/error-page'
+import { ErrorPageSDK } from '@voxgig-sdk/error-page-sdk'
 
 const client = new ErrorPageSDK()
 ```
@@ -409,7 +409,7 @@ error-page/
 Import the SDK from the package root:
 
 ```ts
-import { ErrorPageSDK } from '@voxgig-sdk/error-page'
+import { ErrorPageSDK } from '@voxgig-sdk/error-page-sdk'
 ```
 
 ### Entity state
