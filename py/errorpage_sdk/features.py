@@ -1,12 +1,18 @@
 # ErrorPage SDK feature factory
 
 from errorpage_sdk.feature.base_feature import ErrorPageBaseFeature
+from errorpage_sdk.feature.ratelimit_feature import ErrorPageRatelimitFeature
+from errorpage_sdk.feature.retry_feature import ErrorPageRetryFeature
 from errorpage_sdk.feature.test_feature import ErrorPageTestFeature
+from errorpage_sdk.feature.timeout_feature import ErrorPageTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ErrorPageBaseFeature(),
+    "ratelimit": lambda: ErrorPageRatelimitFeature(),
+    "retry": lambda: ErrorPageRetryFeature(),
     "test": lambda: ErrorPageTestFeature(),
+    "timeout": lambda: ErrorPageTimeoutFeature(),
 }
 
 

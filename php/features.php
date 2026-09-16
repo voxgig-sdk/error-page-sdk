@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ErrorPage SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ErrorPageFeatures
@@ -14,8 +17,14 @@ class ErrorPageFeatures
         switch ($name) {
             case "base":
                 return new ErrorPageBaseFeature();
+            case "ratelimit":
+                return new ErrorPageRatelimitFeature();
+            case "retry":
+                return new ErrorPageRetryFeature();
             case "test":
                 return new ErrorPageTestFeature();
+            case "timeout":
+                return new ErrorPageTimeoutFeature();
             default:
                 return new ErrorPageBaseFeature();
         }
@@ -31,7 +40,10 @@ class ErrorPageFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

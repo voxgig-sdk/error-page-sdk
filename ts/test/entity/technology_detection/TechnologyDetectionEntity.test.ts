@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { ErrorPageSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('TechnologyDetectionEntity', async () => {
 
     const live = 'TRUE' === process.env.ERROR_PAGE_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'technology_detection.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'technology_detection.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"category","req":false,"short":"Category of the technology (e.g., Framework, CMS, CDN, Analytics)","type":"`$STRING`","index$":0},{"active":true,"format":"float","name":"confidence","req":false,"short":"Confidence level of the detection (0-100)","type":"`$NUMBER`","index$":1},{"active":true,"name":"name","req":false,"short":"Name of the detected technology","type":"`$STRING`","index$":2},{"active":true,"name":"version","req":false,"short":"Version of the technology if detected","type":"`$STRING`","index$":3}],"name":"technology_detection","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":"https://example.com","kind":"query","name":"url","orig":"url","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /api/techstack","json":"{\"operationId\":\"detectTechStack\",\"parameters\":[{\"description\":\"The URL of the website to analyze for technology stack detection\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"technologies\":[{\"category\":\"Web Server\",\"confidence\":95.5,\"name\":\"Nginx\",\"version\":\"1.18.0\"},{\"category\":\"Analytics\",\"confidence\":100,\"name\":\"Google Analytics\"}],\"timestamp\":\"2024-01-15T10:30:00Z\",\"url\":\"https://example.com\"},\"schema\":{\"properties\":{\"technologies\":{\"description\":\"List of detected technologies\",\"items\":{\"properties\":{\"category\":{\"description\":\"Category of the technology (e.g., Framework, CMS, CDN, Analytics)\",\"type\":\"string\"},\"confidence\":{\"description\":\"Confidence level of the detection (0-100)\",\"format\":\"float\",\"type\":\"number\"},\"name\":{\"description\":\"Name of the detected technology\",\"type\":\"string\"},\"version\":{\"description\":\"Version of the technology if detected\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"timestamp\":{\"description\":\"Timestamp of the analysis\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with detected technology stack information\"},\"400\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Invalid URL\",\"message\":\"The provided URL parameter is not valid or is missing\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid URL parameter\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Website unreachable\",\"message\":\"The specified website cannot be accessed\",\"suggestions\":[\"Check if the URL is correct\",\"Verify your network connection\",\"The website may be temporarily down\"]},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"suggestions\":{\"description\":\"Suggestions for resolution\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Website not found or unreachable\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Internal Server Error\",\"message\":\"An unexpected error occurred while processing your request\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"},\"503\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Network unreachable\",\"message\":\"The network is currently unreachable\",\"suggestions\":[\"Check your internet connection\",\"Try again later\",\"Contact your network administrator\"]},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"suggestions\":{\"description\":\"Suggestions for resolution\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Service unavailable - Network error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/techstack","segments":[{"lit":"api"},{"lit":"techstack"}],"select":{"exist":["url"]},"transform":{"req":"`reqdata`","res":"`body.technologies`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"technology_detection","name__orig":"technology_detection","Name":"TechnologyDetection","name_":"technology_detection","name-":"technology-detection","NAME":"TECHNOLOGY_DETECTION","index$":0}, {"active":true,"entity":"technology_detection","key$":"BasicTechnologyDetectionFlow","kind":"basic","name":"BasicTechnologyDetectionFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"technology_detection_ref01"}}],"index$":0}]}, 'TechnologyDetection')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID': idmap,
     'ERROR_PAGE_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.ERROR_PAGE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['ERROR_PAGE_TEST_TECHNOLOGY_DETECTION_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new ErrorPageSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.ERROR_PAGE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
