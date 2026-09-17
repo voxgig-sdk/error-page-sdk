@@ -105,12 +105,12 @@ local results, err = client:TechnologyDetection():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/error-page-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
-| Python | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
-| PHP | `voxgig-sdk/error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
+| TypeScript | `@voxgig-sdk/error-page-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/tags) |
+| Python | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/tags) |
+| PHP | `voxgig-sdk/error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/error-page-sdk/go` | `go get github.com/voxgig-sdk/error-page-sdk/go@latest` |
-| Ruby | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
-| Lua | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/releases) |
+| Ruby | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/tags) |
+| Lua | `voxgig-sdk-error-page` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-page-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/error-page-sdk/go-cli` | `go install github.com/voxgig-sdk/error-page-sdk/go-cli/cmd/error-page@latest` |
 | Go MCP server | `github.com/voxgig-sdk/error-page-sdk/go-mcp` | `go get github.com/voxgig-sdk/error-page-sdk/go-mcp@latest` |
 

@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      technology_detection: {
-      },
-
+        technology_detection: {
+        },
+  
     }
   }
 
