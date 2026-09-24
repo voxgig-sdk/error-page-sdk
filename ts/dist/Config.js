@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,24 +107,28 @@ class Config {
             "fields": [
                 {
                     "name": "category",
-                    "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
-                    "type": "`$STRING`"
+                    "title": "Category",
+                    "type": "`$STRING`",
+                    "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)"
                 },
                 {
-                    "format": "float",
                     "name": "confidence",
+                    "title": "Confidence",
+                    "type": "`$NUMBER`",
                     "short": "Confidence level of the detection (0-100)",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
                     "name": "name",
-                    "short": "Name of the detected technology",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the detected technology"
                 },
                 {
                     "name": "version",
-                    "short": "Version of the technology if detected",
-                    "type": "`$STRING`"
+                    "title": "Version",
+                    "type": "`$STRING`",
+                    "short": "Version of the technology if detected"
                 }
             ],
             "name": "technology_detection",
@@ -141,18 +138,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/techstack",
@@ -164,19 +149,32 @@ class Config {
                                     "lit": "techstack"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "api",
+                                "techstack"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.technologies`"
                             },
-                            "parts": [
-                                "api",
-                                "techstack"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }

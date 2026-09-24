@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TechnologyDetectionEntity = void 0;
 const ErrorPageEntityBase_1 = require("../ErrorPageEntityBase");
-// TODO: needs Entity superclass
 class TechnologyDetectionEntity extends ErrorPageEntityBase_1.ErrorPageEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

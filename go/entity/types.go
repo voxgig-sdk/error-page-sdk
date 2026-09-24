@@ -1,7 +1,7 @@
 // Typed models for the ErrorPage SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // TechnologyDetection is the typed data model for the technology_detection entity.
 type TechnologyDetection struct {
-	Category *string `json:"category,omitempty"`
-	Confidence *float64 `json:"confidence,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Version *string `json:"version,omitempty"`
 }
 
 // TechnologyDetectionListMatch is the typed request payload for TechnologyDetection.ListTyped.

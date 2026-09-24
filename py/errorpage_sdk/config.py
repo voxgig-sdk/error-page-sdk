@@ -116,24 +116,28 @@ def make_config():
         "fields": [
           {
             "name": "category",
-            "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
+            "title": "Category",
             "type": "`$STRING`",
+            "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
           },
           {
-            "format": "float",
             "name": "confidence",
-            "short": "Confidence level of the detection (0-100)",
+            "title": "Confidence",
             "type": "`$NUMBER`",
+            "short": "Confidence level of the detection (0-100)",
+            "format": "float",
           },
           {
             "name": "name",
-            "short": "Name of the detected technology",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the detected technology",
           },
           {
             "name": "version",
-            "short": "Version of the technology if detected",
+            "title": "Version",
             "type": "`$STRING`",
+            "short": "Version of the technology if detected",
           },
         ],
         "name": "technology_detection",
@@ -143,18 +147,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/techstack",
@@ -166,19 +158,32 @@ def make_config():
                     "lit": "techstack",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "techstack",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.technologies`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.technologies`",
-                },
-                "parts": [
-                  "api",
-                  "techstack",
-                ],
               },
             ],
           },

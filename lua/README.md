@@ -43,7 +43,7 @@ local technologydetections, err = client:TechnologyDetection():list()
 if err then error(err) end
 
 for _, item in ipairs(technologydetections) do
-  print(item["category"])
+  print(item)
 end
 ```
 

@@ -91,24 +91,28 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "category",
-						"short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
+						"title": "Category",
 						"type": "`$STRING`",
+						"short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "confidence",
-						"short": "Confidence level of the detection (0-100)",
+						"title": "Confidence",
 						"type": "`$NUMBER`",
+						"short": "Confidence level of the detection (0-100)",
+						"format": "float",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the detected technology",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the detected technology",
 					},
 					map[string]any{
 						"name": "version",
-						"short": "Version of the technology if detected",
+						"title": "Version",
 						"type": "`$STRING`",
+						"short": "Version of the technology if detected",
 					},
 				},
 				"name": "technology_detection",
@@ -118,18 +122,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/techstack",
@@ -141,18 +133,31 @@ func MakeConfig() map[string]any {
 										"lit": "techstack",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"techstack",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.technologies`",
 								},
-								"parts": []any{
-									"api",
-									"techstack",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},

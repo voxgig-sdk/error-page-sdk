@@ -24,43 +24,113 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "technology_detection": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "short": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
-              "type": "`$STRING`"
+          "fields": {
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "sh": "Category of the technology (e.g., Framework, CMS, CDN, Analytics)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "float",
-              "name": "confidence",
-              "req": false,
-              "short": "Confidence level of the detection (0-100)",
-              "type": "`$NUMBER`"
+            "confidence": {
+              "a": true,
+              "fo": "float",
+              "h": "Confidence",
+              "n": "confidence",
+              "r": false,
+              "sh": "Confidence level of the detection (0-100)",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the detected technology",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the detected technology",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "version",
-              "req": false,
-              "short": "Version of the technology if detected",
-              "type": "`$STRING`"
+            "version": {
+              "a": true,
+              "h": "Version",
+              "n": "version",
+              "r": false,
+              "sh": "Version of the technology if detected",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "technology_detection",
           "op": {
             "list": {
@@ -68,30 +138,35 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/techstack",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/techstack",
-                    "json": "{\"operationId\":\"detectTechStack\",\"parameters\":[{\"description\":\"The URL of the website to analyze for technology stack detection\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"technologies\":[{\"category\":\"Web Server\",\"confidence\":95.5,\"name\":\"Nginx\",\"version\":\"1.18.0\"},{\"category\":\"Analytics\",\"confidence\":100,\"name\":\"Google Analytics\"}],\"timestamp\":\"2024-01-15T10:30:00Z\",\"url\":\"https://example.com\"},\"schema\":{\"properties\":{\"technologies\":{\"description\":\"List of detected technologies\",\"items\":{\"properties\":{\"category\":{\"description\":\"Category of the technology (e.g., Framework, CMS, CDN, Analytics)\",\"type\":\"string\"},\"confidence\":{\"description\":\"Confidence level of the detection (0-100)\",\"format\":\"float\",\"type\":\"number\"},\"name\":{\"description\":\"Name of the detected technology\",\"type\":\"string\"},\"version\":{\"description\":\"Version of the technology if detected\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"timestamp\":{\"description\":\"Timestamp of the analysis\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with detected technology stack information\"},\"400\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Invalid URL\",\"message\":\"The provided URL parameter is not valid or is missing\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid URL parameter\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Website unreachable\",\"message\":\"The specified website cannot be accessed\",\"suggestions\":[\"Check if the URL is correct\",\"Verify your network connection\",\"The website may be temporarily down\"]},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"suggestions\":{\"description\":\"Suggestions for resolution\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Website not found or unreachable\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Internal Server Error\",\"message\":\"An unexpected error occurred while processing your request\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"},\"503\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Network unreachable\",\"message\":\"The network is currently unreachable\",\"suggestions\":[\"Check your internet connection\",\"Try again later\",\"Contact your network administrator\"]},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"suggestions\":{\"description\":\"Suggestions for resolution\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Service unavailable - Network error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/techstack",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/techstack",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -99,12 +174,7 @@
                       "lit": "techstack"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.technologies`"
                   }
@@ -533,13 +603,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

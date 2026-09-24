@@ -19,7 +19,6 @@ import type {
   TechnologyDetectionListMatch,
 } from '../ErrorPageTypes'
 
-// TODO: needs Entity superclass
 class TechnologyDetectionEntity extends ErrorPageEntityBase<TechnologyDetection> {
 
   constructor(client: ErrorPageSDK, entopts: any) {
